@@ -9,7 +9,7 @@ import Services from './pages/Services';
 import Events from './pages/Events';
 import Contact from './pages/Contact';
 import Industries from './pages/Industries';
-import ISUC2026 from './pages/ISUC2026';
+import ISUC2026 from './pages/ISUC2026.jsx';
 import Partners from './pages/Partners';
 import Gallery from './pages/Gallery';
 import PrivacyPolicy from './pages/PrivacyPolicy';

@@ -49,13 +49,13 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`relative text-[13px] font-bold uppercase tracking-widest transition-all hover:text-gold ${location.pathname === link.path
+                className={`relative text-[12px] font-bold uppercase tracking-widest transition-all hover:text-gold whitespace-nowrap ${location.pathname === link.path
                   ? 'text-gold'
                   : scrolled ? 'text-navy' : 'text-white/90'
-                  } ${link.special ? 'bg-gold/10 px-3 py-1 rounded-full border border-gold/20' : ''}`}
+                  } ${link.special ? 'text-gold' : ''}`}
               >
                 {link.name}
-                {location.pathname === link.path && !link.special && (
+                {location.pathname === link.path && (
                   <motion.div
                     layoutId="navbar-indicator"
                     className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gold rounded-full"
@@ -109,7 +109,7 @@ const Navbar = () => {
                       }`}
                   >
                     <span>{link.name}</span>
-                    {link.special && <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-full uppercase">Special</span>}
+                    {/* Removed Special tag */}
                   </Link>
                 </motion.div>
               ))}
