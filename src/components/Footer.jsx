@@ -59,6 +59,9 @@ const Footer = () => {
                 { label: 'About Us', path: '/about' },
                 { label: 'Services', path: '/services' },
                 { label: 'Events', path: '/events' },
+                { label: 'Industries', path: '/industries' },
+                { label: 'Partners', path: '/partners' },
+                { label: 'Gallery', path: '/gallery' },
                 { label: 'ISUC 2026', path: '/isuc-2026' },
                 { label: 'Contact', path: '/contact' },
               ].map((item) => (
