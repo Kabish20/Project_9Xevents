@@ -62,17 +62,29 @@ const Footer = () => {
                 { label: 'Industries', path: '/industries' },
                 { label: 'Partners', path: '/partners' },
                 { label: 'Gallery', path: '/gallery' },
-                { label: 'ISUC 2026', path: '/isuc-2026' },
+                { label: 'ISUC 2026', path: 'https://isuc2026.com/', external: true },
                 { label: 'Contact', path: '/contact' },
               ].map((item) => (
                 <li key={item.label}>
-                  <Link
-                    to={item.path}
-                    className="hover:text-gold transition-colors flex items-center group"
-                  >
-                    {item.label}
-                    <ArrowUpRight size={12} className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </Link>
+                  {item.external ? (
+                    <a
+                      href={item.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-gold transition-colors flex items-center group"
+                    >
+                      {item.label}
+                      <ArrowUpRight size={12} className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.path}
+                      className="hover:text-gold transition-colors flex items-center group"
+                    >
+                      {item.label}
+                      <ArrowUpRight size={12} className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

@@ -23,7 +23,7 @@ const Navbar = () => {
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Events', path: '/events' },
-    { name: 'ISUC 2026', path: '/isuc-2026', special: true },
+    { name: 'ISUC 2026', path: 'https://isuc2026.com/', special: true },
     { name: 'Industries', path: '/industries' },
     { name: 'Partners', path: '/partners' },
     { name: 'Gallery', path: '/gallery' },
@@ -45,25 +45,35 @@ const Navbar = () => {
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center xl:space-x-8 lg:space-x-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className={`relative text-[12px] font-bold uppercase tracking-widest transition-all hover:text-gold whitespace-nowrap ${location.pathname === link.path
-                  ? 'text-gold'
-                  : scrolled ? 'text-navy' : 'text-white/90'
-                  } ${link.special ? 'text-gold' : ''}`}
-              >
-                {link.name}
-                {location.pathname === link.path && (
-                  <motion.div
-                    layoutId="navbar-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gold rounded-full"
-                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                  />
-                )}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isExternal = link.path.startsWith('http');
+              const content = (
+                <>
+                  {link.name}
+                  {location.pathname === link.path && (
+                    <motion.div
+                      layoutId="navbar-indicator"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gold rounded-full"
+                      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                </>
+              );
+              const className = `relative text-[12px] font-bold uppercase tracking-widest transition-all hover:text-gold whitespace-nowrap ${location.pathname === link.path
+                ? 'text-gold'
+                : scrolled ? 'text-navy' : 'text-white/90'
+                } ${link.special ? 'text-gold' : ''}`;
+
+              return isExternal ? (
+                <a key={link.name} href={link.path} target="_blank" rel="noopener noreferrer" className={className}>
+                  {content}
+                </a>
+              ) : (
+                <Link key={link.name} to={link.path} className={className}>
+                  {content}
+                </Link>
+              );
+            })}
             <Link
               to="/contact"
               className="bg-gold hover:bg-gold/90 text-white px-7 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all transform hover:scale-105 active:scale-95 shadow-xl shadow-gold/20 animate-pulse-gold"
@@ -94,25 +104,39 @@ const Navbar = () => {
             className="lg:hidden glass border-t border-white/10 max-h-[calc(100vh-80px)] overflow-y-auto shadow-2xl"
           >
             <div className="px-6 pt-6 pb-12 space-y-2">
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.04 }}
-                >
-                  <Link
-                    to={link.path}
-                    className={`flex items-center justify-between px-4 py-5 rounded-2xl text-lg font-bold tracking-tight transition-all active:scale-[0.98] ${location.pathname === link.path 
-                      ? 'bg-gold text-white shadow-lg shadow-gold/20' 
-                      : 'text-navy hover:bg-navy/5'
-                      }`}
-                  >
+              {navLinks.map((link, i) => {
+                const isExternal = link.path.startsWith('http');
+                const className = `flex items-center justify-between px-4 py-5 rounded-2xl text-lg font-bold tracking-tight transition-all active:scale-[0.98] ${location.pathname === link.path 
+                  ? 'bg-gold text-white shadow-lg shadow-gold/20' 
+                  : 'text-navy hover:bg-navy/5'
+                  }`;
+                
+                const content = (
+                  <>
                     <span>{link.name}</span>
                     {/* Removed Special tag */}
-                  </Link>
-                </motion.div>
-              ))}
+                  </>
+                );
+
+                return (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.04 }}
+                  >
+                    {isExternal ? (
+                      <a href={link.path} target="_blank" rel="noopener noreferrer" className={className}>
+                        {content}
+                      </a>
+                    ) : (
+                      <Link to={link.path} className={className}>
+                        {content}
+                      </Link>
+                    )}
+                  </motion.div>
+                );
+              })}
               <div className="pt-6">
                 <Link
                   to="/contact"

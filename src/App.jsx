@@ -9,7 +9,6 @@ import Services from './pages/Services';
 import Events from './pages/Events';
 import Contact from './pages/Contact';
 import Industries from './pages/Industries';
-import ISUC2026 from './pages/ISUC2026.jsx';
 import Partners from './pages/Partners';
 import Gallery from './pages/Gallery';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -41,7 +40,6 @@ function AnimatedRoutes() {
           <Route path="/services" element={<Services />} />
           <Route path="/events" element={<Events />} />
           <Route path="/industries" element={<Industries />} />
-          <Route path="/isuc-2026" element={<ISUC2026 />} />
           <Route path="/partners" element={<Partners />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />

@@ -90,9 +90,9 @@ const Events = () => {
                   <p className="text-gray-500 text-lg mb-10 leading-relaxed">{event.desc}</p>
                   <div className="flex flex-wrap gap-4">
                     {event.featured ? (
-                      <Link to="/isuc-2026" className="bg-navy text-white px-8 py-3.5 rounded-full font-bold hover:bg-gold transition-colors flex items-center">
-                        View Details <ArrowRight className="ml-2" size={18} />
-                      </Link>
+                      <a href="https://isuc2026.com/" target="_blank" rel="noopener noreferrer" className="bg-navy text-white px-8 py-3.5 rounded-full font-bold hover:bg-gold transition-colors flex items-center">
+                        Visit Official Site <ArrowRight className="ml-2" size={18} />
+                      </a>
                     ) : (
                       <button className="bg-navy text-white px-8 py-3.5 rounded-full font-bold hover:bg-gold transition-colors flex items-center">
                         View Details <ArrowRight className="ml-2" size={18} />

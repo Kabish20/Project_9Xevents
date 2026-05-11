@@ -252,9 +252,9 @@ const Home = () => {
                   A premier international business convention bringing together entrepreneurs, industry professionals, suppliers, travel businesses, and strategic partners under one networking ecosystem.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Link to="/isuc-2026" className="bg-gold hover:bg-gold/90 text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg flex items-center group">
+                  <a href="https://isuc2026.com/" target="_blank" rel="noopener noreferrer" className="bg-gold hover:bg-gold/90 text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg flex items-center group">
                     Visit ISUC 2026 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
-                  </Link>
+                  </a>
                   <Link to="/contact" className="text-white border border-white/30 px-8 py-3.5 rounded-full font-bold hover:bg-white/10 transition-all">
                     Become a Sponsor
                   </Link>
