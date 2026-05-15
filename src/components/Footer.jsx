@@ -1,8 +1,45 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Globe, ArrowUpRight } from 'lucide-react';
 
+const InstagramIcon = ({ size = 16 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  </svg>
+);
+
+const FacebookIcon = ({ size = 16 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+  </svg>
+);
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  const socialLinks = [
+    { name: 'Instagram', icon: InstagramIcon, url: 'https://www.instagram.com/9xevents?igsh=b3htb2htdXEzY2Zi&utm_source=qr' },
+    { name: 'Facebook', icon: FacebookIcon, url: 'https://www.facebook.com/share/1E8cJgNnTi/?mibextid=wwXIfr' },
+  ];
 
   return (
     <footer className="bg-navy text-white relative overflow-hidden">
@@ -37,14 +74,16 @@ const Footer = () => {
               9X Events is a global business events and networking company creating impactful platforms for industries to connect, collaborate, and grow.
             </p>
             <div className="flex space-x-3">
-              {['linkedin', 'twitter', 'instagram', 'facebook'].map((platform) => (
+              {socialLinks.map((social) => (
                 <a
-                  key={platform}
-                  href="#"
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-gold hover:scale-110 transition-all"
-                  aria-label={platform}
+                  aria-label={social.name}
                 >
-                  <Globe size={16} />
+                  <social.icon size={16} />
                 </a>
               ))}
             </div>
