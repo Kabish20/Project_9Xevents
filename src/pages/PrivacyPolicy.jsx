@@ -1,48 +1,61 @@
 import { motion } from 'framer-motion';
 import { Shield, Lock, Eye, FileText, Globe, Bell } from 'lucide-react';
+import { SEO } from '@/components/common/SEO';
+import { COMPANY_INFO } from '@/data/companyInfo';
 
-const PrivacyPolicy = () => {
+export const PrivacyPolicy = () => {
   const sections = [
     {
       title: 'Introduction',
       icon: FileText,
-      content: '9X Events ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or participate in our events across India, UAE, Saudi Arabia, and Sri Lanka.'
+      content:
+        '9X Events ("we," "us," or "our") is dedicated to safeguarding your privacy. This Privacy Policy details how we gather, utilize, protect, and manage your personal data when you interact with our website or engage with our international business events across India, UAE, Saudi Arabia, and Sri Lanka.',
     },
     {
       title: 'Information Collection',
       icon: Eye,
-      content: 'We collect information that you provide directly to us, such as when you register for an event, subscribe to our newsletter, or contact us for enquiries. This may include your name, email address, phone number, company details, and professional interests.'
+      content:
+        'We collect details you voluntarily share when registering for conferences, trade fairs, summits, subscribing to industry briefings, or submitting partnership enquiries. This may include your full name, professional email, contact numbers, organization name, designation, and sector preferences.',
     },
     {
       title: 'How We Use Your Information',
       icon: Lock,
-      content: 'Your data is used to provide and manage event services, process registrations, communicate event updates, and improve our networking platforms. We may also use your information for marketing purposes with your explicit consent.'
+      content:
+        'Your information is utilized to coordinate delegate passes, facilitate buyer-seller table meets, communicate critical event updates, issue official badges, and continually refine our B2B networking ecosystems. With explicit consent, we may send you notifications regarding upcoming summits.',
     },
     {
       title: 'Data Sharing & International Transfers',
       icon: Globe,
-      content: 'As a global company, we may share your information with our regional offices and strategic partners to facilitate international event participation. We ensure all data transfers comply with applicable data protection laws and maintain high security standards.'
+      content:
+        'As an international events company, data may be accessed securely by our regional desks in India, UAE, Saudi Arabia, and Sri Lanka strictly for international delegation clearance, travel coordination, and venue security protocol.',
     },
     {
-      title: 'Data Security',
+      title: 'Data Security & Storage',
       icon: Shield,
-      content: 'We implement robust technical and organizational measures to protect your personal data against unauthorized access, loss, or alteration. However, no method of transmission over the internet is 100% secure.'
+      content:
+        'We implement enterprise-grade encryption and administrative safeguards to defend your personal data from unauthorized disclosure, destruction, or interception.',
     },
     {
-      title: 'Your Rights & Updates',
+      title: 'Your Privacy Rights & Updates',
       icon: Bell,
-      content: 'You have the right to access, correct, or delete your personal information. We may update this policy periodically to reflect changes in our practices or legal requirements. We encourage you to review this page regularly.'
-    }
+      content:
+        'You have the explicit right to access, rectify, or request deletion of your information stored within our database. We review and update this policy periodically to align with evolving statutory guidelines.',
+    },
   ];
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
+      <SEO
+        title="Privacy Policy | 9X Events"
+        description="Read the official Privacy Policy of 9X Events outlining our data collection, security, and global delegate privacy standards."
+      />
+
+      {/* Hero Banner */}
       <section className="relative pt-40 pb-20 overflow-hidden bg-navy">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,#c5a059_0%,transparent_50%)]" />
         </div>
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -50,21 +63,21 @@ const PrivacyPolicy = () => {
           >
             Privacy <span className="text-gold">Policy</span>
           </motion.h1>
-          <p className="text-gray-400 text-lg">Last Updated: May 2026</p>
+          <p className="text-gray-400 text-base sm:text-lg">Last Updated: May 2026</p>
         </div>
       </section>
 
-      {/* Content */}
+      {/* Content Section */}
       <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-16">
             {sections.map((section, i) => (
               <motion.div
-                key={i}
+                key={section.title}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.08 }}
                 className="flex flex-col md:flex-row gap-8"
               >
                 <div className="shrink-0">
@@ -73,8 +86,10 @@ const PrivacyPolicy = () => {
                   </div>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-display font-bold text-navy mb-4">{section.title}</h2>
-                  <p className="text-gray-600 leading-relaxed text-lg">
+                  <h2 className="text-2xl font-display font-bold text-navy mb-4">
+                    {section.title}
+                  </h2>
+                  <p className="text-gray-600 leading-relaxed text-base md:text-lg">
                     {section.content}
                   </p>
                 </div>
@@ -82,11 +97,18 @@ const PrivacyPolicy = () => {
             ))}
           </div>
 
-          <div className="mt-24 p-12 bg-gray-50 rounded-3xl border border-gray-100">
-            <h3 className="text-xl font-bold text-navy mb-4">Contact Our Data Protection Officer</h3>
-            <p className="text-gray-500 mb-6">If you have any questions about this Privacy Policy, please contact us at:</p>
-            <a href="mailto:connect@9Xevents.com" className="text-gold font-bold text-lg hover:underline transition-all">
-              connect@9Xevents.com
+          <div className="mt-20 p-10 sm:p-12 bg-gray-50 rounded-3xl border border-gray-100">
+            <h3 className="text-xl font-bold text-navy mb-2">
+              Questions Regarding Data Protection?
+            </h3>
+            <p className="text-gray-500 mb-6 text-sm">
+              If you have any questions or requests concerning your data rights, please contact our data desk at:
+            </p>
+            <a
+              href={`mailto:${COMPANY_INFO.contacts.email}`}
+              className="text-gold font-bold text-lg hover:underline transition-all"
+            >
+              {COMPANY_INFO.contacts.email}
             </a>
           </div>
         </div>

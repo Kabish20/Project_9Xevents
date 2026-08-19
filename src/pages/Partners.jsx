@@ -1,89 +1,117 @@
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ArrowRight, Handshake } from 'lucide-react';
+import { Handshake, ArrowRight, Award, ShieldCheck } from 'lucide-react';
+import { SEO } from '@/components/common/SEO';
+import { PageHero } from '@/components/common/PageHero';
+import { SectionHeader } from '@/components/common/SectionHeader';
+import { Button } from '@/components/common/Button';
+import { CTASection } from '@/components/sections/CTASection';
+import { PARTNER_TIERS } from '@/data/partnersData';
 
-const Partners = () => {
-  const sections = [
-    { title: 'Strategic Partners', count: 4 },
-    { title: 'Supporting Organizations', count: 6 },
-    { title: 'Media Partners', count: 4 },
-    { title: 'Corporate Sponsors', count: 6 },
-    { title: 'Knowledge Partners', count: 4 },
-    { title: 'Association Partners', count: 4 },
-  ];
-
+export const Partners = () => {
   return (
     <div className="min-h-screen">
-      {/* Hero */}
-      <section className="relative pt-40 pb-28 overflow-hidden">
-        <div className="absolute inset-0">
-          <img src="/networking.png" alt="Partnerships" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-navy/85" />
-        </div>
-        <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-display font-black text-white mb-6"
-          >
-            Partners & <span className="text-gold">Sponsors</span>
-          </motion.h1>
-          <p className="text-gray-300 text-xl max-w-2xl mx-auto">Collaborating with global leaders to deliver excellence in every event.</p>
-        </div>
-      </section>
+      <SEO
+        title="Partners & Sponsors | 9X Events"
+        description="Discover our global network of strategic partners, supporting organizations, and corporate sponsors collaborating with 9X Events."
+      />
+
+      {/* Hero Banner */}
+      <PageHero
+        title="Partners &"
+        highlight="Sponsors"
+        subtitle="Collaborating with global industry leaders, trade associations, and corporate pioneers to deliver excellence in every event."
+        bgImage="/networking.png"
+        align="center"
+      />
 
       {/* Partners Grid */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {sections.map((section, i) => (
+          <SectionHeader
+            eyebrow="Collaborative Ecosystem"
+            title="Our Strategic"
+            highlight="Network"
+            description="We collaborate with international trade bodies, government councils, and enterprises across the globe."
+            align="center"
+          />
+
+          {PARTNER_TIERS.map((tier, i) => (
             <motion.div
-              key={i}
+              key={tier.id || tier.title}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="mb-20"
+              className="mb-20 last:mb-0"
             >
-              <h2 className="text-2xl font-bold text-navy mb-10 border-b border-gray-100 pb-4 flex items-center">
-                <Handshake className="text-gold mr-3" size={24} />
-                {section.title}
-              </h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                {[...Array(section.count)].map((_, j) => (
+              <div className="border-b border-gray-100 pb-4 mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                <h2 className="text-2xl font-display font-bold text-navy flex items-center">
+                  <Handshake className="text-gold mr-3" size={24} />
+                  {tier.title}
+                </h2>
+                {tier.description && (
+                  <span className="text-xs font-semibold text-gray-400 mt-1 sm:mt-0 uppercase tracking-wider">
+                    {tier.description}
+                  </span>
+                )}
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                {[...Array(tier.count)].map((_, j) => (
                   <motion.div
                     key={j}
-                    whileHover={{ scale: 1.02, y: -4 }}
-                    className="h-32 bg-gray-50 rounded-2xl flex items-center justify-center border border-gray-100 grayscale hover:grayscale-0 hover:border-gold/20 hover:shadow-md transition-all cursor-pointer"
+                    whileHover={{ scale: 1.03, y: -4 }}
+                    className="h-32 bg-gray-50 rounded-2xl flex flex-col items-center justify-center p-4 border border-gray-100 grayscale hover:grayscale-0 hover:border-gold/30 hover:bg-white hover:shadow-md transition-all cursor-pointer group"
                   >
-                    <p className="text-gray-300 font-bold uppercase tracking-widest text-xs">Partner Logo</p>
+                    <Award className="text-gray-300 group-hover:text-gold transition-colors mb-2" size={24} />
+                    <p className="text-gray-400 font-bold uppercase tracking-widest text-[11px] group-hover:text-navy transition-colors">
+                      {tier.title.split(' ')[0]} Partner
+                    </p>
                   </motion.div>
                 ))}
               </div>
             </motion.div>
           ))}
 
-          {/* Become a Partner CTA */}
-          <div className="bg-linear-to-r from-navy to-navy-light p-16 rounded-3xl text-center relative overflow-hidden">
+          {/* Become a Partner Callout Box */}
+          <div className="mt-20 bg-linear-to-r from-navy to-navy-light p-10 sm:p-16 rounded-3xl text-center relative overflow-hidden shadow-2xl">
             <div className="absolute inset-0 animate-shimmer" />
-            <div className="relative z-10">
-              <h3 className="text-3xl font-display font-bold text-white mb-4">Become a Partner</h3>
-              <p className="text-gray-300 mb-10 max-w-xl mx-auto">
-                Join our ecosystem of international businesses and organizations. Request our sponsorship deck today.
+            <div className="relative z-10 max-w-2xl mx-auto">
+              <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-gold mx-auto mb-6">
+                <ShieldCheck size={32} />
+              </div>
+              <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
+                Become a Global Partner
+              </h3>
+              <p className="text-gray-300 mb-8 text-base md:text-lg leading-relaxed">
+                Join our ecosystem of international businesses and organizations. Request our customized partnership & sponsorship deck today.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Link to="/contact" className="bg-gold text-white px-10 py-4 rounded-full font-bold hover:bg-gold/90 transition-all shadow-lg flex items-center group">
-                  Partner Enquiry <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
-                </Link>
-                <button className="text-white border border-white/20 px-10 py-4 rounded-full font-bold hover:bg-white/10 transition-all">
+                <Button
+                  to="/contact"
+                  variant="gold"
+                  size="lg"
+                  icon={ArrowRight}
+                  iconPosition="right"
+                >
+                  Partner Enquiry
+                </Button>
+                <Button
+                  to="/contact"
+                  variant="outline"
+                  size="lg"
+                >
                   Request Sponsor Deck
-                </button>
+                </Button>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* CTA */}
+      <CTASection />
     </div>
   );
 };
 
 export default Partners;
-
