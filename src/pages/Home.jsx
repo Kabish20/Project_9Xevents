@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Trophy, Check, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
@@ -12,9 +12,19 @@ import { COMPANY_INFO } from '@/data/companyInfo';
 import { SERVICES_DATA } from '@/data/servicesData';
 import { INDUSTRIES_DATA } from '@/data/industriesData';
 import { FEATURED_EVENT } from '@/data/eventsData';
+import { GALLERY_ITEMS } from '@/data/galleryData';
+
+const HERO_COLLAGE_ITEMS = [
+  { id: 'hero-roundtable', src: '/hero-roundtable.png', label: 'Global Leadership Roundtable', cat: 'Business Connections' },
+  { id: 'hero-keynote', src: '/hero-keynote.png', label: 'International Keynote Stage', cat: 'Keynote Moments' },
+  { id: 'hero-networking', src: '/hero-networking.png', label: 'Global Networking Exchange', cat: 'Networking' },
+  { id: 'global-exhibition', src: '/global-exhibition.png', label: 'Global Trade Exhibition', cat: 'Exhibition Floor' },
+  GALLERY_ITEMS[3],
+];
 
 export const Home = () => {
   const heroRef = useRef(null);
+  const prefersReducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
@@ -111,6 +121,31 @@ export const Home = () => {
             </div>
           </motion.div>
         </motion.div>
+
+        {/* Moving event image collage */}
+        <div className="hero-image-collage" aria-label="Highlights from 9X Events">
+          {HERO_COLLAGE_ITEMS.map((item, index) => (
+            <motion.div
+              key={item.id}
+              className={`hero-collage-card hero-collage-card-${index + 1}`}
+              animate={prefersReducedMotion ? undefined : {
+                y: [0, index % 2 === 0 ? -16 : 16, 0],
+                rotate: [index % 2 === 0 ? -4 : 4, index % 2 === 0 ? 1 : -1, index % 2 === 0 ? -4 : 4],
+                scale: [1, 1.035, 1],
+              }}
+              transition={{
+                duration: 7 + index * 0.7,
+                repeat: Infinity,
+                ease: 'easeInOut',
+                delay: index * 0.45,
+              }}
+            >
+              <img src={item.src} alt={item.label} />
+              <span>{item.cat}</span>
+            </motion.div>
+          ))}
+          <div className="hero-collage-glow" />
+        </div>
 
         {/* Scroll indicator */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center space-y-2">

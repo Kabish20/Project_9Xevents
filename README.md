@@ -32,15 +32,12 @@
 │   ├── exhibition.png       # Exhibition imagery
 │   └── networking.png       # B2B networking imagery
 ├── src/
-│   ├── assets/              # Component-level static assets
 │   ├── components/          # Modular UI component hierarchy
 │   │   ├── common/          # Reusable foundational UI elements
 │   │   │   ├── Button.jsx   # Polymorphic button (gold/navy/outline/glass)
-│   │   │   ├── Card.jsx     # Motion-enhanced card container
 │   │   │   ├── PageHero.jsx # Standardized animated subpage banner
 │   │   │   ├── SectionHeader.jsx # Consistent section titles
-│   │   │   ├── SEO.jsx      # Dynamic document title & meta tags
-│   │   │   └── index.js     # Common components barrel export
+│   │   │   └── SEO.jsx      # Dynamic document title & meta tags
 │   │   ├── layout/          # Global layout scaffolding
 │   │   │   ├── Layout.jsx   # Master layout wrapper (Navbar + Main + Footer)
 │   │   │   ├── Navbar.jsx   # Fixed glassmorphism navbar & mobile menu
@@ -48,12 +45,10 @@
 │   │   │   ├── WhatsAppButton.jsx # Floating interactive WhatsApp CTA
 │   │   │   ├── ScrollToTop.jsx # Route-change scroll restoration
 │   │   │   └── index.js     # Layout barrel export
-│   │   ├── sections/        # High-level composable section blocks
-│   │   │   ├── CTASection.jsx # Call-to-action banner
-│   │   │   ├── GlobalPresence.jsx # International offices grid
-│   │   │   ├── TestimonialsSection.jsx # Partner feedback cards
-│   │   │   └── index.js     # Sections barrel export
-│   │   └── index.js         # Top-level components barrel export
+│   │   └── sections/        # High-level composable section blocks
+│   │       ├── CTASection.jsx # Call-to-action banner
+│   │       ├── GlobalPresence.jsx # International offices grid
+│   │       └── TestimonialsSection.jsx # Partner feedback cards
 │   ├── data/                # Single Source of Truth for all content
 │   │   ├── companyInfo.js   # Contact numbers, offices, socials & stats
 │   │   ├── navigation.js    # Header & footer navigation links
@@ -62,12 +57,10 @@
 │   │   ├── eventsData.js    # Flagship & upcoming international events
 │   │   ├── galleryData.js   # Gallery items and category filters
 │   │   ├── partnersData.js  # Partnership tiers and sponsors
-│   │   ├── testimonialsData.js # Partner reviews & core values
-│   │   └── index.js         # Data layer barrel export
+│   │   └── testimonialsData.js # Partner reviews & core values
 │   ├── hooks/               # Custom React hooks
 │   │   ├── useScrollPosition.js # Track window scroll state & offsets
-│   │   ├── useDocumentTitle.js  # Dynamic browser tab title management
-│   │   └── index.js         # Hooks barrel export
+│   │   └── useDocumentTitle.js  # Dynamic browser tab title management
 │   ├── pages/               # Application page views
 │   │   ├── Home.jsx         # Homepage
 │   │   ├── About.jsx        # About Us & Company overview
@@ -87,8 +80,7 @@
 │   │   ├── AppRoutes.jsx    # Animated route switcher & 404 fallback
 │   │   └── index.js         # Routes barrel export
 │   ├── utils/               # Helper utilities
-│   │   ├── cn.js            # Tailwind classnames merger (clsx + twMerge)
-│   │   └── index.js         # Utils barrel export
+│   │   └── cn.js            # Tailwind classnames merger (clsx + twMerge)
 │   ├── App.jsx              # Application root entry point
 │   ├── index.css            # Global CSS variables & Tailwind directives
 │   └── main.jsx             # React DOM mounting
@@ -160,6 +152,6 @@ chmod +x deploy_to_aws.sh
 
 - **Zero console warnings** with strict Tailwind CSS v4 syntax conformance.
 - **Path aliases** (`@/*`) used across all imports for clean and maintainable references.
-- **Comprehensive barrel exports** (`index.js`) for common components, layout, sections, data, hooks, pages, and routes.
+- **Direct module imports** for shared components, data, hooks, and utilities; barrel exports for layout, pages, and routes.
 - **Dynamic SEO metadata** on every page view.
 - **Responsive design** tested across Mobile, Tablet, and Ultra-Wide Desktop viewports.

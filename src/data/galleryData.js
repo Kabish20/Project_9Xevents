@@ -18,6 +18,7 @@ export const GALLERY_ITEMS = [
   { id: 6, src: '/gallery-bg.png', label: 'Grand Exhibition Hall', cat: 'Event Photos', categoryId: 'photos' },
   { id: 7, src: '/services-bg.png', label: 'Summit Keynote Staging', cat: 'Event Photos', categoryId: 'photos' },
   { id: 8, src: '/networking.png', label: 'Cross-Border Deal Signing', cat: 'Networking', categoryId: 'networking' },
+  { id: 9, src: '/global-exhibition.png', label: 'Global Trade Exhibition', cat: 'Event Photos', categoryId: 'photos' },
 ];
 
 export default GALLERY_ITEMS;
